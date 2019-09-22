@@ -5,6 +5,8 @@ public class Character{
 		lupin.introduce();
 		jigen.introduce();
 		hikaku(lupin,jigen);
+		lupin.attack(jigen);
+		jigen.attack(lupin);
 	}
 	public static void hikaku(Hero a,Hero b){
 		if(a.getHp() > b.getHp()){

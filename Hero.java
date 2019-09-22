@@ -1,3 +1,4 @@
+import java.util.Random;
 class Hero{
 	private String name;
 	private int mp;
@@ -17,5 +18,16 @@ class Hero{
 	}
 	public int getHp(){
 		return hp;
+	}
+	public void attack(Hero enemy){
+		System.out.println(this.name + "が" + enemy.name +"に攻撃する。");
+		Random random = new Random();
+		int damagePoint = random.nextInt(50);
+		damage(enemy ,damagePoint);
+	}
+	public void damage(Hero enemy ,int damagePoint){
+		enemy.hp -= damagePoint;
+		System.out.println(enemy.name+"のライフポイントが"+ damagePoint +"減った。");
+		System.out.println(enemy.name+"のライフポイントは"+ enemy.hp +"だ");
 	}
 }
