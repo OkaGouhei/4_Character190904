@@ -19,15 +19,15 @@ class Hero{
 	public int getHp(){
 		return hp;
 	}
-	public void attack(Hero enemy){
-		System.out.println(this.name + "が" + enemy.name +"に攻撃する。");
+	public void attack(Hero hero){
+		System.out.println(this.name + "が" + hero.name +"に攻撃する。");
 		Random random = new Random();
 		int damagePoint = random.nextInt(50);
-		damage(enemy ,damagePoint);
+		hero.damage(this ,damagePoint);
 	}
-	public void damage(Hero enemy ,int damagePoint){
-		enemy.hp -= damagePoint;
-		System.out.println(enemy.name+"のライフポイントが"+ damagePoint +"減った。");
-		System.out.println(enemy.name+"のライフポイントは"+ enemy.hp +"だ");
+	public void damage(Hero hero,int damagePoint){
+		this.hp -= damagePoint;
+		System.out.println(this.name + "が" + hero.name + "から" + damagePoint + "の攻撃を受けた");
+		System.out.println(this.name + "のライフポイントは" + this.hp + "だ");
 	}
 }
