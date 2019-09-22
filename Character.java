@@ -1,20 +1,33 @@
-public class Character{
-	public static void main(String args[]) {
-		Hero lupin = new Hero("ルパン",100,500);
-		Hero jigen = new Hero("次元",200,300);
-		lupin.introduce();
-		jigen.introduce();
-		hikaku(lupin,jigen);
-		lupin.attack(jigen);
-		jigen.attack(lupin);
+import java.util.Random;
+class Character{
+	private String name;
+	private int mp;
+	private int hp;
+	public Character(String  name,int hp,int mp){
+		this.hp = hp;
+		this.mp = mp;
+		this.name = name;
 	}
-	public static void hikaku(Hero a,Hero b){
-		if(a.getHp() > b.getHp()){
-			System.out.println(a.getName() + "の方が" + b.getName() + "よりライフポイントが高い。");
-		}else if(a.getHp() < b.getHp()){
-			System.out.println(b.getName() + "の方が" + a.getName() + "よりライフポイントが高い。");
-		}else {
-			System.out.println(b.getName() + "と" + a.getName() + "のライフポイントは同じだ。");
-		}
+	public void introduce(){
+		System.out.println("私の名前は" + name + "だ");
+		System.out.println("ライフポイントは" + hp + "だ");
+		System.out.println("マジックポイントは" + mp + "だ");
+	}
+	public String getName(){
+		return name;
+	}
+	public int getHp(){
+		return hp;
+	}
+	public void attack(Character hero){
+		System.out.println(this.name + "が" + hero.name +"に攻撃する。");
+		Random random = new Random();
+		int damagePoint = random.nextInt(50);
+		hero.damage(this ,damagePoint);
+	}
+	public void damage(Character hero,int damagePoint){
+		this.hp -= damagePoint;
+		System.out.println(this.name + "が" + hero.name + "から" + damagePoint + "の攻撃を受けた");
+		System.out.println(this.name + "のライフポイントは" + this.hp + "だ");
 	}
 }
