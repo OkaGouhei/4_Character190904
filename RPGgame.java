@@ -9,7 +9,7 @@ public class RPGgame{
 		jigen.attack(lupin);
 		Magician lucifer = new Magician("ルシファー",200,50);
 		lucifer.introduce();
-		lucifer.magic(jigen);
+		lucifer.attack(jigen);
 		Monster pokemon = new Monster("ポケモン",200);
 		pokemon.introduce();
 		pokemon.attack(lupin);

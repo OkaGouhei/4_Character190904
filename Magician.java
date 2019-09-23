@@ -10,7 +10,7 @@ class Magician extends Character{
     super(name,hp);
     this.mp = mp;
   }
-  public void magic(Character character){
+  public void attack(Character character){
     System.out.println(this.name + "が" + character.name +"に魔術攻撃する。");
     int damagePoint = this.mp;
     character.damage(this ,damagePoint);
