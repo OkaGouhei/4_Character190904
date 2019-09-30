@@ -18,7 +18,7 @@ public class RPGgame{
 			TeamB[i].introduce();
 		}
 		int TeamNumber =0;
-		while(shoubu(TeamA,TeamA,TeamB)&shoubu(TeamB,TeamA,TeamB)){
+		while(shoubu(TeamA)&shoubu(TeamB)){
 			Character[] Team1 ;
 			Character[] Team2 ;
 			if(TeamNumber%2==0){
@@ -40,27 +40,20 @@ public class RPGgame{
 			if(Team2[number2].hp <= 0){
 				System.out.println(Team2[number2].name +"は生き絶えた");
 			}
+			if(shoubu(Team2)==false){
+				if(TeamNumber%2==0){
+					System.out.println("TeamBは全滅した");
+				}else {
+					System.out.println("TeamAは全滅した");
+				}
+			}
 		}
 	}
-	public static void hikaku(Character a,Character b){
-		if(a.getHp() > b.getHp()){
-			System.out.println(a.getName() + "の方が" + b.getName() + "よりライフポイントが高い。");
-		}else if(a.getHp() < b.getHp()){
-			System.out.println(b.getName() + "の方が" + a.getName() + "よりライフポイントが高い。");
-		}else {
-			System.out.println(b.getName() + "と" + a.getName() + "のライフポイントは同じだ。");
-		}
-	}
-	static boolean shoubu(Character[] Character,Character[] CharacterA,Character[] CharacterB){
+	static boolean shoubu(Character[] Character){
 		for(int i=0;i < Character.length;i++){
 			if(Character[i].getHp() > 0){
 				return true;
 			}
-		}
-		if (Character == CharacterA){
-			System.out.println("TeamAは全滅した");
-		}else if(Character== CharacterB){
-			System.out.println("TeamBは全滅した");
 		}
 		return false;
 	}
