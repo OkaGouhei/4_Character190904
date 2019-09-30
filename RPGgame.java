@@ -40,7 +40,7 @@ public class RPGgame{
 			if(Team2[number2].hp <= 0){
 				System.out.println(Team2[number2].name +"は生き絶えた");
 			}
-			if(shoubu(Team2)==false){
+			if(!shoubu(Team2)){
 				if(TeamNumber%2==0){
 					System.out.println("TeamBは全滅した");
 				}else {
