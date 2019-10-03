@@ -1,52 +1,41 @@
 import java.util.Random;
 public class RPGgame{
 	public static void main(String args[]) {
-		Character[] teamA = new Character[4];
-		Character[] teamB = new Character[4];
-		teamA[0]= new Character("ルパン",1000);
-		teamA[1]= new Character("五右衛門",1000);
-		teamA[2]= new Character("次元",1000);
-		teamA[3]= new Character("不二子",1500);
-		for(int i=0;i < teamA.length;i++){
-			teamA[i].introduce();
-		}
-		teamB[0]= new Magician("lucifer",500,40);
-		teamB[1]= new Magician("マリック",500,30);
-		teamB[2]= new Monster("ポケモン",500);
-		teamB[3]= new Monster("ポケポケ",500);
-		for(int i=0;i < teamB.length;i++){
-			teamB[i].introduce();
+		Character[][] team = new Character[2][4];
+		team[0][0]= new Character("ルパン",1000);
+		team[0][1]= new Character("五右衛門",1000);
+		team[0][2]= new Character("次元",1000);
+		team[0][3]= new Character("不二子",1500);
+		team[1][0]= new Magician("lucifer",500,40);
+		team[1][1]= new Magician("マリック",500,30);
+		team[1][2]= new Monster("ポケモン",500);
+		team[1][3]= new Monster("ポケポケ",500);
+		for(int i =0;i <team.length;i++){
+			for(int j=0;j < team[i].length;j++){
+				team[i][j].introduce();
+			}
 		}
 		int teamNumber =0;
-		while(shoubu(teamA)&shoubu(teamB)){
-			Character[] team1 ;
-			Character[] team2 ;
-			if(teamNumber%2==0){
-				team1 = teamA;
-				team2 = teamB;
-			}else{
-				team1 = teamB;
-				team2 = teamA;
-			}
-			teamNumber++;
+		while(shoubu(team[0])&shoubu(team[1])){
 			Random r = new Random();
 			int number1;
 			int number2;
 			do{
 				number1 = r.nextInt(4);
 				number2 = r.nextInt(4);
-			}while(team1[number1].getHp()<=0 || team2[number2].getHp()<=0);
-			team1[number1].attack(team2[number2]);
-			if(team2[number2].hp <= 0){
-				System.out.println(team2[number2].name +"は生き絶えた");
+			}while(team[0][number1].getHp()<=0 || team[1][number2].getHp()<=0);
+			team[ teamNumber %2 ][number1].attack(team[ (teamNumber+1) %2 ][number2]);
+			if(team[(teamNumber+1) %2 ][number2].hp <= 0){
+				System.out.println(team[(teamNumber+1) %2 ][number2].name +"は生き絶えた");
 			}
-			if(!shoubu(team2)){
+			if(!shoubu(team[(teamNumber+1) %2 ])){
 				if(teamNumber%2==0){
 					System.out.println("teamBは全滅した");
 				}else {
 					System.out.println("teamAは全滅した");
 				}
 			}
+			teamNumber++;
 		}
 	}
 	static boolean shoubu(Character[] Character){
