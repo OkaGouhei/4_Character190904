@@ -30,9 +30,9 @@ public class RPGgame{
 			}
 			if(!shoubu(team[(teamNumber+1) %2 ])){
 				if(teamNumber%2==0){
-					System.out.println("teamBは全滅した");
+					System.out.println("luciferチームは全滅した");
 				}else {
-					System.out.println("teamAは全滅した");
+					System.out.println("ルパンチームは全滅した");
 				}
 			}
 			teamNumber++;
