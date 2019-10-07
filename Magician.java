@@ -1,4 +1,4 @@
-class Magician extends Character{
+class Magician extends Character implements Movable{
   private int mp;
   public void introduce(){
     System.out.println("私は魔術師だ");
@@ -14,6 +14,11 @@ class Magician extends Character{
     System.out.println(this.name + "が" + character.name +"に魔術攻撃する。");
     int damagePoint = this.mp;
     character.damage(this ,damagePoint);
+  }
+  public void move(Character target){
+    System.out.println(this.name + "が" + target.name +"からライフポイントを奪う");
+    target.damage(this ,20);
+    this.hp = +10;
   }
 }
 
