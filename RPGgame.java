@@ -16,14 +16,15 @@ public class RPGgame{
 			}
 		}
 
-		Movable[] teamB = new Movable[3];
-		teamB[0] = new Magician("ルーシー",500,40);
-		teamB[1] = new Magician("ルイージ",500,40);
-		teamB[2] = new Monster("マイケル",500);
-		teamB[2] = new Doreja("ドレジャ",500);
-		for(int i=0;i < teamB.length;i++){
-			teamB[i].move(team[0][i]);
-		}
+    Movable move[] = new Movable[5];
+    move[0] = (Magician)team[1][0];
+    move[1] = (Magician)team[1][1];
+    move[2] = (Monster)team[1][2];
+    move[3] = (Monster)team[1][3];
+    move[4] = new Doreja("ドレージャ",1000);
+    for(int i =0;i < move.length ; i++){
+      move[i].move(team[0][new Random().nextInt(4)]);
+    }
 
 		int teamNumber =0;
 		while(shoubu(team[0])&shoubu(team[1])){

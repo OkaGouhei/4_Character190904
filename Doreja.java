@@ -8,7 +8,9 @@ class Doreja implements Movable{
   }
   public void move(Character target){
     System.out.println(this.name + "が" + target.name +"からライフポイントを奪う");
-    target.hp = -10;
-    this.hp = +10;
+    target.hp -= 10;
+    this.hp += 10;
+    System.out.println(target.name + "が" + this.name + "から" + 10 + "の攻撃を受けた");
+    System.out.println(target.name + "のライフポイントは" + target.hp + "だ");
   }
 }
