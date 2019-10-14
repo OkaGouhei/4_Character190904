@@ -16,9 +16,10 @@ class Magician extends Character implements Movable{
     character.damage(this ,damagePoint);
   }
   public void move(Character target){
-    System.out.println(this.name + "が" + target.name +"からライフポイントを奪う");
-    target.damage(this ,20);
-    this.hp = +10;
+    attack(target);
+    // System.out.println(this.name + "が" + target.name +"からライフポイントを奪う");
+    // target.damage(this ,20);
+    // this.hp = +10;
   }
 }
 
