@@ -24,7 +24,6 @@ public class RPGgame{
 		for(int i =0;i < move.length ; i++){
 			move[i].move(team[0][new Random().nextInt(4)]);
 		}
-
 		int teamNumber =0;
 		while(shoubu(team[0])&shoubu(team[1])){
 			Random r = new Random();
@@ -34,7 +33,15 @@ public class RPGgame{
 				number1 = r.nextInt(4);
 				number2 = r.nextInt(4);
 			}while(team[0][number1].getHp()<=0 || team[1][number2].getHp()<=0);
-			team[ teamNumber %2 ][number1].attack(team[ (teamNumber+1) %2 ][number2]);
+			if(teamNumber %2 == 0){
+				team[0][number1].attack(team[1][number2]);
+			}else{
+				if(number1==0||number1==1){
+					((Magician)team[1][number1]).move(team[0][number2]);
+				}else if(number1==2||number1==3){
+					((Monster)team[1][number1]).move(team[0][number2]);
+				}
+			}
 			if(team[(teamNumber+1) %2 ][number2].hp <= 0){
 				System.out.println(team[(teamNumber+1) %2 ][number2].name +"は生き絶えた");
 			}
